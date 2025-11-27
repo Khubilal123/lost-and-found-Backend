@@ -4,17 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>VGU Lost & Found Portal</title>
-  <link rel="stylesheet" >
+
+  <!-- ✅ Correct CSS path -->
+  <link rel="stylesheet" href="src/style.css">
 </head>
+
 <body>
   <header>
     <div class="branding">  
-      <img src="https://forms.vgu.ac.in/default/images/frontend/logo12.png" alt="Vivekananda Global University Logo" class="logo">
+      <img src="https://forms.vgu.ac.in/default/images/frontend/logo12.png" 
+           alt="Vivekananda Global University Logo" class="logo">
       <div class="title">
         <h1>Vivekananda Global University</h1>
         <h2>Campus Lost & Found Portal</h2>
       </div>
     </div>
+
     <nav>
       <a href="#report-lost">Report Lost</a>
       <a href="#report-found">Report Found</a>
@@ -23,6 +28,8 @@
   </header>
 
   <main>
+
+    <!-- ✅ LOST ITEM FORM -->
     <section id="report-lost">
       <h2>🛑 Report Lost Item</h2>
       <form id="lost-item-form">
@@ -37,14 +44,16 @@
 
         <label for="lost-item-contact">Contact Info</label>
         <input id="lost-item-contact" name="contact" type="text" placeholder="Contact Info" required>
-        <label for="lost-item-image">Optional Image (jpg/png, &lt; 1.5 MB)</label>
+
+        <label for="lost-item-image">Optional Image (jpg/png, < 1.5 MB)</label>
         <input id="lost-item-image" name="image" type="file" accept="image/*">
-        <div id="lost-image-preview" class="image-preview" aria-hidden="true"></div>
+        <div id="lost-image-preview" class="image-preview"></div>
 
         <button type="submit">Submit</button>
       </form>
     </section>
 
+    <!-- ✅ FOUND ITEM FORM -->
     <section id="report-found">
       <h2>✅ Report Found Item</h2>
       <form id="found-item-form">
@@ -59,16 +68,19 @@
 
         <label for="found-item-contact">Contact Info</label>
         <input id="found-item-contact" name="contact" type="text" placeholder="Contact Info" required>
-        <label for="found-item-image">Optional Image (jpg/png, &lt; 1.5 MB)</label>
+
+        <label for="found-item-image">Optional Image (jpg/png, < 1.5 MB)</label>
         <input id="found-item-image" name="image" type="file" accept="image/*">
-        <div id="found-image-preview" class="image-preview" aria-hidden="true"></div>
+        <div id="found-image-preview" class="image-preview"></div>
 
         <button type="submit">Submit</button>
       </form>
     </section>
 
+    <!-- ✅ ITEMS LIST -->
     <section id="items-list">
       <h2>📌 Lost & Found Items</h2>
+
       <div class="controls">
         <input id="search-input" type="search" placeholder="Search items or location...">
         <select id="filter-select">
@@ -77,72 +89,50 @@
           <option value="found">Found</option>
         </select>
       </div>
-      <ul id="items-list-ul">
-        <!-- Dynamic items will be added here -->
-      </ul>
+
+      <ul id="items-list-ul"></ul>
     </section>
 
+    <!-- ✅ SUPPORT SECTION -->
     <section id="Support">
-      <h2>👥 Support </h2>
-      <p class="section-description">If you need assistance locating a lost item or reporting a found item, you can reach out to our coordinators:</p>
+      <h2>👥 Support</h2>
+      <p class="section-description">
+        If you need assistance locating a lost item or reporting a found item, contact our coordinators:
+      </p>
+
       <div class="contacts-grid">
+
         <div class="contact-card">
           <div class="contact-role">👦 Student (Boy)</div>
-          <div class="contact-field">
-            <strong>Name:</strong>
-            <span class="contact-text">Khubilal Javat</span>
-          </div>
-          <div class="contact-field">
-            <strong>Phone:</strong>
-            <span class="contact-text">7426921976</span>
-          </div>
-          <div class="contact-field">
-            <strong>Email:</strong>
-            <span class="contact-text">Enter email address</span>
-          </div>
+          <div class="contact-field"><strong>Name:</strong> <span>Khubilal Javat</span></div>
+          <div class="contact-field"><strong>Phone:</strong> <span>7426921976</span></div>
+          <div class="contact-field"><strong>Email:</strong> <span>Enter email address</span></div>
         </div>
 
         <div class="contact-card">
           <div class="contact-role">👧 Student (Girl)</div>
-          <div class="contact-field">
-            <strong>Name:</strong>
-            <span class="contact-text">Enter contact name</span>
-          </div>
-          <div class="contact-field">
-            <strong>Phone:</strong>
-            <span class="contact-text">Enter phone number</span>
-          </div>
-          <div class="contact-field">
-            <strong>Email:</strong>
-            <span class="contact-text">Enter email address</span>
-          </div>
+          <div class="contact-field"><strong>Name:</strong> <span>Enter contact name</span></div>
+          <div class="contact-field"><strong>Phone:</strong> <span>Enter phone number</span></div>
+          <div class="contact-field"><strong>Email:</strong> <span>Enter email address</span></div>
         </div>
 
         <div class="contact-card">
           <div class="contact-role">👨‍🏫 Faculty</div>
-          <div class="contact-field">
-            <strong>Name:</strong>
-            <span class="contact-text">Enter contact name</span>
-          </div>
-          <div class="contact-field">
-            <strong>Phone:</strong>
-            <span class="contact-text">Enter phone number</span>
-          </div>
-          <div class="contact-field">
-            <strong>Email:</strong>
-            <span class="contact-text">Enter email address</span>
-          </div>
+          <div class="contact-field"><strong>Name:</strong> <span>Enter contact name</span></div>
+          <div class="contact-field"><strong>Phone:</strong> <span>Enter phone number</span></div>
+          <div class="contact-field"><strong>Email:</strong> <span>Enter email address</span></div>
         </div>
+
       </div>
     </section>
-  </main>
 
-  <!-- Accessible live region for announcements -->
-  <div id="a11y-live" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+  </main>
 
   <footer>
     <p>&copy; 2024 Vivekananda Global University | Campus Lost & Found Portal</p>
   </footer>
+
+  <!-- ✅ Correct JS path -->
+  <script src="src/script.js"></script>
 </body>
-<script src="src/script.js"></script>
 </html>
