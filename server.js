@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
+import mongoose from "mongoose";
 import itemsRouter from "./routes/items.js";
 
 dotenv.config();
@@ -15,6 +16,17 @@ const __dirname = path.dirname(__filename);
 
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
+
+// ✅ CONNECT TO MONGODB (THIS WAS MISSING)
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("✅ MongoDB connected"))
+.catch(err => {
+  console.error("❌ MongoDB connection error:", err);
+  process.exit(1);
+});
 
 // ✅ Serve static frontend files (HTML, CSS, JS)
 app.use(express.static(__dirname));
