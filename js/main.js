@@ -11,7 +11,7 @@ async function addItem(event) {
     const newItem = { name, description, location };
 
     try {
-        const res = await fetch(`${API_BASE}/api/items`, {
+        const res = await fetch(`${API_BASE}/items`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newItem)
@@ -20,7 +20,7 @@ async function addItem(event) {
         if (!res.ok) throw new Error("Failed to add item");
 
         document.getElementById("itemForm").reset();
-        loadItems();
+       loadItems();
     } catch (err) {
         console.error(err);
         alert("Error adding item");
@@ -30,7 +30,7 @@ async function addItem(event) {
 // ✅ Load Items
 async function loadItems() {
     try {
-        const res = await fetch(`${API_BASE}/api/items`);
+        const res = await fetch(`${API_BASE}/items`);
         const items = await res.json();
 
         const list = document.getElementById("itemsList");
@@ -58,7 +58,7 @@ async function loadItems() {
 // ✅ Delete Item
 async function deleteItem(id) {
     try {
-        const res = await fetch(`${API_BASE}/api/items/${id}`, {
+        const res = await fetch(`${API_BASE}/items/${id}`, {
             method: "DELETE"
         });
 
@@ -71,8 +71,5 @@ async function deleteItem(id) {
     }
 }
 
-// ✅ Load items on page load
 document.addEventListener("DOMContentLoaded", loadItems);
-
-// ✅ Attach form handler
 document.getElementById("itemForm").addEventListener("submit", addItem);
