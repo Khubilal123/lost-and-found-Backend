@@ -80,3 +80,5 @@ async function deleteItem(id) {
 
 document.addEventListener("DOMContentLoaded", loadItems);
 document.getElementById("lost-item-form").addEventListener("submit", addItem);
+
+const isAdmin = true; // set to false on public version
