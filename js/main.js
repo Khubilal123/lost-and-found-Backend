@@ -1,14 +1,15 @@
 const API_BASE = "https://lost-and-found-backend-nzre.onrender.com";
 
-// ✅ Add Item
+// ✅ Add Lost Item
 async function addItem(event) {
     event.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const description = document.getElementById("description").value;
-    const location = document.getElementById("location").value;
+    const name = document.getElementById("lost-item-name").value;
+    const description = document.getElementById("lost-item-desc").value;
+    const location = document.getElementById("lost-item-location").value;
+    const contact = document.getElementById("lost-item-contact").value;
 
-    const newItem = { name, description, location };
+    const newItem = { name, description, location, contact, type: "lost" };
 
     try {
         const res = await fetch(`${API_BASE}/items`, {
@@ -19,7 +20,7 @@ async function addItem(event) {
 
         if (!res.ok) throw new Error("Failed to add item");
 
-        document.getElementById("itemForm").reset();
+        document.getElementById("lost-item-form").reset();
         loadItems();
     } catch (err) {
         console.error(err);
@@ -33,21 +34,22 @@ async function loadItems() {
         const res = await fetch(`${API_BASE}/items`);
         const items = await res.json();
 
-        const list = document.getElementById("itemsList");
+        const list = document.getElementById("items-list-ul");
         list.innerHTML = "";
 
         items.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item-card";
+            const li = document.createElement("li");
+            li.className = "item-card";
 
-            div.innerHTML = `
+            li.innerHTML = `
                 <h3>${item.name}</h3>
                 <p>${item.description}</p>
                 <p><strong>Location:</strong> ${item.location}</p>
+                <p><strong>Contact:</strong> ${item.contact}</p>
                 <button onclick="deleteItem('${item._id}')">Delete</button>
             `;
 
-            list.appendChild(div);
+            list.appendChild(li);
         });
     } catch (err) {
         console.error(err);
@@ -72,4 +74,4 @@ async function deleteItem(id) {
 }
 
 document.addEventListener("DOMContentLoaded", loadItems);
-document.getElementById("itemForm").addEventListener("submit", addItem);
+document.getElementById("lost-item-form").addEventListener("submit", addItem);
