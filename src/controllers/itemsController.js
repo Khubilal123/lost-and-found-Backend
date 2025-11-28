@@ -1,4 +1,4 @@
-import Item from "../models/Item.js";
+import Item from "../models/item.js";
 import cloudinary from "cloudinary";
 
 cloudinary.v2.config({
