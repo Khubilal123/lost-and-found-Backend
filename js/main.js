@@ -20,7 +20,7 @@ async function addItem(event) {
         if (!res.ok) throw new Error("Failed to add item");
 
         document.getElementById("itemForm").reset();
-       loadItems();
+        loadItems();
     } catch (err) {
         console.error(err);
         alert("Error adding item");
