@@ -1,6 +1,6 @@
 const API_BASE = "https://lost-and-found-backend-nzre.onrender.com";
 
-// ✅ Add Lost Item
+// Add Lost Item
 async function addItem(event) {
     event.preventDefault();
 
@@ -28,7 +28,7 @@ async function addItem(event) {
     }
 }
 
-// ✅ Load Items
+// Load Items
 async function loadItems() {
     try {
         const res = await fetch(`${API_BASE}/items`);
@@ -46,7 +46,7 @@ async function loadItems() {
                 <p>${item.description}</p>
                 <p><strong>Location:</strong> ${item.location}</p>
                 <p><strong>Contact:</strong> ${item.contact}</p>
-                <button onclick="deleteItem('${item._id}')">Delete</button>
+                ${isAdmin ? `<button onclick="deleteItem('${item._id}')">Delete</button>` : ""}
             `;
 
             list.appendChild(li);
@@ -57,13 +57,14 @@ async function loadItems() {
     }
 }
 
-// ✅ Delete Item
+// Delete Item
 async function deleteItem(id) {
+
     try {
         const res = await fetch(`${API_BASE}/items/${id}`, {
             method: "DELETE",
             headers: {
-                "x-admin-key": "VGU2024ADMIN"  // same key as .env
+                "x-admin-key": "Khubi@123"  
             }
         });
 
