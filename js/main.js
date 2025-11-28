@@ -61,7 +61,10 @@ async function loadItems() {
 async function deleteItem(id) {
     try {
         const res = await fetch(`${API_BASE}/items/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                "x-admin-key": "VGU2024ADMIN"  // same key as .env
+            }
         });
 
         if (!res.ok) throw new Error("Failed to delete");
@@ -69,9 +72,10 @@ async function deleteItem(id) {
         loadItems();
     } catch (err) {
         console.error(err);
-        alert("Error deleting item");
+        alert("Unauthorized: Only admin can delete items");
     }
 }
+
 
 document.addEventListener("DOMContentLoaded", loadItems);
 document.getElementById("lost-item-form").addEventListener("submit", addItem);
